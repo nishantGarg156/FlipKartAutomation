@@ -14,6 +14,7 @@ public class ProductPage {
     private By sizeOfOption = By.xpath("//a[contains(@class,'CDDksN ')]");
     private By colourOptions = By.xpath("//span[contains(text(),'Color')]/following-sibling::div//div");
     private By addToBagButton = By.xpath("//button[contains(text(),'Add to cart')]");
+    private By productName = By.xpath("//span[contains(@class,'VU-ZEz')]");
 
 
     public ProductPage(WebDriver driver) {
@@ -38,6 +39,12 @@ public class ProductPage {
             System.out.println("Color '" + color + "' not available, selecting default color.");
         }
 
+    }
+
+    public String getProductName() {
+        WebElement productNameElement = driver.findElement(productName);
+        String ProductName = productNameElement.getText().trim();
+        return ProductName;
     }
 
     public void addToBag() {

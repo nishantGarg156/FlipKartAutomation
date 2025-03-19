@@ -15,11 +15,6 @@ public class BasePage {
         return driver;
     }
 
-
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     @BeforeMethod
     public void setup() {
         if (driver == null) {
