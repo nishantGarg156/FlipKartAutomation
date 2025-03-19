@@ -7,14 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Set;
 
 public class HomePage {
     WebDriver driver;
     WebDriverWait wait;
     private By serachBar = By.xpath("//input[@placeholder='Search for Products, Brands and More']");
-    private By products = By.xpath("//div[@class='gqcSqV YGE0gZ']");
-
+    private By navigateToCartButton = By.xpath("//span[contains(text(),'Cart')]");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -29,17 +27,10 @@ public class HomePage {
 
     }
 
-    public void selectFirstProducts() {
-        WebElement productsElement = driver.findElement(products);
-        String mainWindowHandle = driver.getWindowHandle();
-        productsElement.click();
-        Set<String> windowHandles = driver.getWindowHandles();
-        for (String handle : windowHandles) {
-            if (!handle.equals(mainWindowHandle)) {
-                driver.switchTo().window(handle);
-                break;
-            }
-        }
-
+    public void navigateToCart() {
+        WebElement navigateToCartButtonElement = driver.findElement(navigateToCartButton);
+        navigateToCartButtonElement.click();
     }
+
+
 }

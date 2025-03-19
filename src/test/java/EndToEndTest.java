@@ -16,12 +16,10 @@ public class EndToEndTest extends BasePage {
         homePage = new HomePage(getDriver());
         productPage = new ProductPage(getDriver());
         bagPage = new BagPage(getDriver());
-        homePage.serachForProduct("Shoes");
-        homePage.selectFirstProducts();
-        productPage.selectColour("White");
-        productPage.selectSize("8");
-        productPage.addToBag();
-        Assert.assertEquals(bagPage.bagItemCount(), 1, "Expected 1 item in the cart!");
+        homePage.serachForProduct("T-shirt");
+        productPage.selectKProducts(3);
+        homePage.navigateToCart();
+        Assert.assertEquals(bagPage.bagItemCount(), 3, "Expected 3 item in the cart!");
     }
 
 
